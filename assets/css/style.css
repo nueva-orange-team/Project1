@@ -3,3 +3,7 @@
   height: 50px;
   border-width: 2px;
 }
+
+.hidden {
+  display: none;
+}
