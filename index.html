@@ -12,35 +12,32 @@
 </head>
 
 <body>
-  <!-- <h1> Can't decide where to eat?</h1>
-  <h3> We Can help with that.</h3> -->
-  
   <div id="mySidenav" class="sidenav">
     <a href="#" id="loginWGithub">Login w Github</a>
     <a href="#" id="loginWGoogle">Login w Google </a>
   </div>
-  
+
   <div style="margin-left:80px;">
-    <p>← Sign in With Github or Google.</p>
+    <p>← Sign in With Github or Google</p>
   </div>
 
-  <div class="container-three-test">
-    <div class="row justify-content-center">
-      <div class="col-lg-3">
-        <input type="text" name="" value="" placeholder="Cuisine Type" class="form-control input2-css" id="cuisine-input">
-      </div>
-      <div class="col-lg-3">
-        <button type="button" name="" class="btn btn-secondary" id="cuisine-find-btn">Find This Cuisine Near Me!</button>
-      </div>
-      </div>
-      <div style="text-align:center">
-      <p class="restaurant-name">Your Restaurant</p>
 
-      <p class="restaurant-location">Address</p>
 
-  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="assets/javascript/script.js"></script>
+  <div class="grid">
+    <input type="text" name="" value="" placeholder="Cuisine Type" class="form-control input2-css" id="cuisine-input">
+    <button type="button" name="" class="btn btn-secondary" id="cuisine-find-btn">Find This Cuisine Near Me!</button>
+    <p class="restaurant-name">Your Restaurant</p>
+    <p class="restaurant-location">Address</p>
+    <p class="cost42"></p>
+    <p class="restaurant-neighborhood"></p>
+    <p class="cuisine"></p>
+    <div id="restaurant-rating"></div>
+    <div id="image"></div>
+  </div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="assets/javascript/script.js"></script>
 </body>
 
 </html>

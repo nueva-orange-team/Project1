@@ -36,8 +36,12 @@ rapid.call('Zomato', 'search', {
 }).on('success', function(payload) {
     console.log(payload);
     $(".restaurant-name").html(payload.result.restaurants[0].restaurant.name);
-    $(".restaurant-location").html(payload.result.restaurants[0].restaurant.location.address);
-    $(".restaurant-rating").html(payload.result.restaurants[0].restaurant.user_rating.aggregate_rating);
+    $(".restaurant-location").html(payload.result.restaurants[0].restaurant.location.address)
+    $(".restaurant-neighborhood").html(`Neighborhood: ${payload.result.restaurants[0].restaurant.location.locality}`);
+    $("#restaurant-rating").html(`<p class="rating-style">${payload.result.restaurants[0].restaurant.user_rating.aggregate_rating}</p>`);
+    $("#image").html(`<img class='img'src="${payload.result.restaurants[0].restaurant.featured_image}">`)
+    $(".cuisine").html(`Cuisines: ${payload.result.restaurants[0].restaurant.cuisines}`)
+    $(".cost42").html(`If this a date situation, then the average cost for two is $${payload.result.restaurants[0].restaurant.average_cost_for_two}`)
 }).on('error', function(payload) {
 	 /*YOUR CODE GOES HERE*/
 });
