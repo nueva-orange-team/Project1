@@ -33,6 +33,7 @@ rapid.call('Zomato', 'search', {
 	'offset': '0',
 	// 'sort': 'realDistance'
 
+<<<<<<< Updated upstream
 }).on('success', function (payload) {
   var random = Math.floor((Math.random() * 19) + 0);
   console.log(random);
@@ -41,6 +42,16 @@ rapid.call('Zomato', 'search', {
   $(".restaurant-location").html(payload.result.restaurants[random].restaurant.location.address);
   $(".restaurant-rating").html(payload.result.restaurants[random].restaurant.user_rating.aggregate_rating);
 }).on('error', function (payload) {
+=======
+}).on('success', function(payload) {
+  var random = Math.floor((Math.random() * 19) + 0);
+  console.log(random);
+    console.log(payload);
+    $(".restaurant-name").html(payload.result.restaurants[0].restaurant.name);
+    $(".restaurant-location").html(payload.result.restaurants[0].restaurant.location.address);
+    $(".restaurant-rating").html(payload.result.restaurants[0].restaurant.user_rating.aggregate_rating);
+}).on('error', function(payload) {
+>>>>>>> Stashed changes
 	 /*YOUR CODE GOES HERE*/
 });
 });
