@@ -24,7 +24,7 @@ $("#cuisine-find-btn").on("click", function(){
 cuisine = $("#cuisine-input").val().trim();
 
 rapid.call('Zomato', 'search', {
-	'apiKey': '7a92ebe9a7f0e1c5487a3ea08e3ef1e2',
+	'apiKey': `${apiKey}`,
 	'coordinates': '42.032402, -87.741623',
 	'entityType': 'city',
 	'count': '20',
@@ -32,6 +32,10 @@ rapid.call('Zomato', 'search', {
 	'entityId': '292',
 	'searchQuery': cuisine,
 	'offset': '0',
+  'headers': {
+     "accept": "application/json",
+     "Access-Control-Allow-Origin":"*",
+}
 	// 'sort': 'realDistance'
 
 }).on('success', function (payload) {
@@ -40,13 +44,28 @@ rapid.call('Zomato', 'search', {
   console.log(random);
   console.log(payload);
   $(".restaurant-name").html(payload.result.restaurants[random].restaurant.name);
-  $(".restaurant-location").html(payload.result.restaurants[random].restaurant.location.address);
+    var address = payload.result.restaurants[random].restaurant.location.address
+    console.log(address);
+    var shortenSuffix = address
+              .replace("Avenue", "Ave.")
+              .replace("Avenue,", "Ave.")
+              .replace("Street", "St.")
+              .replace("Boulevard", "Blvd.,")
+              .replace("Street,", "St.")
+              .replace("North", "N")
+              .replace("South", "S")
+              // .replace("South", "S.")
+
+
+
+    console.log(shortenSuffix)
+  $(".restaurant-location").html(shortenSuffix);
   $("#restaurant-rating").html(`<p class="rating-style">${payload.result.restaurants[random].restaurant.user_rating.aggregate_rating}</p>`);
   $(".restaurant-neighborhood").html(`Neighborhood: ${payload.result.restaurants[random].restaurant.location.locality}`)
   $("#image").html(`<img class='img'src="${payload.result.restaurants[random].restaurant.featured_image}">`)
-  $(".cuisine").html(`Cuisines: ${payload.result.restaurants[random].restaurant.cuisines}`)
-  $("#menu").html($(location).attr(`'href', '${payload.result.restaurants[random].restaurant.menu_url}'`));
-  $(".cost42").html(`If this a date situation, then the average cost for two is $${payload.result.restaurants[random].restaurant.average_cost_for_two}`)
+  $(".cuisine").html(`<span class="cuisine-text">Cuisines: <br>${payload.result.restaurants[random].restaurant.cuisines}</span>`)
+  $("#menu").html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text">See menu<span></a>`);
+  $(".cost42").html(`<p class="average-cost"><span class="cost-text">Average cost for two:</span><br><span class="price-text">$${payload.result.restaurants[random].restaurant.average_cost_for_two}</span></p>`)
 }).on('error', function (payload) {
 	 /*YOUR CODE GOES HERE*/
 });
