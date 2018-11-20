@@ -26,7 +26,7 @@ rapid.call('Zomato', 'search', {
 	'apiKey': '7a92ebe9a7f0e1c5487a3ea08e3ef1e2',
 	'coordinates': '42.032402, -87.741623',
 	'entityType': 'city',
-	'count': '1',
+	'count': '20',
 	'radiusSearch': '10000',
 	'entityId': '292',
 	'searchQuery': cuisine,
@@ -34,10 +34,12 @@ rapid.call('Zomato', 'search', {
 	// 'sort': 'realDistance'
 
 }).on('success', function (payload) {
-    console.log(payload);
-    $(".restaurant-name").html(payload.result.restaurants[0].restaurant.name);
-    $(".restaurant-location").html(payload.result.restaurants[0].restaurant.location.address);
-    $(".restaurant-rating").html(payload.result.restaurants[0].restaurant.user_rating.aggregate_rating);
+  var random = Math.floor((Math.random() * 19) + 0);
+  console.log(random);
+  console.log(payload);
+  $(".restaurant-name").html(payload.result.restaurants[random].restaurant.name);
+  $(".restaurant-location").html(payload.result.restaurants[random].restaurant.location.address);
+  $(".restaurant-rating").html(payload.result.restaurants[random].restaurant.user_rating.aggregate_rating);
 }).on('error', function (payload) {
 	 /*YOUR CODE GOES HERE*/
 });
