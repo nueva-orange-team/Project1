@@ -45,7 +45,7 @@ rapid.call('Zomato', 'search', {
 });
 });
 
-// We may possible the below code to run another API call.
+// We may possibly use the below code to run another API call.
 $("#submit-btn").on("click", function(){
 var userInput = $("#user-input").val().trim();
 console.log(userInput)
@@ -56,7 +56,6 @@ $("#user-input").val("")
 function loginWithGitHub() {
   console.log("Github login button clicked")
   var provider = new firebase.auth.GithubAuthProvider();
-
   firebase.auth().signInWithPopup(provider).then(function(result) {
     window.location("homepage.html") // make second page put in here
     // This gives you a GitHub Access Token. You can use it to access the GitHub API.
