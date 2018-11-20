@@ -1,3 +1,4 @@
+$( document ).ready(function() {
 // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAP32QvCD4ukQGZp5neVVqxj2vTGYDPwpk",
@@ -35,17 +36,30 @@ rapid.call('Zomato', 'search', {
 
 }).on('success', function (payload) {
   var random = Math.floor((Math.random() * 19) + 0);
+  $(".modal-btn").removeClass("hidden");
   console.log(random);
   console.log(payload);
   $(".restaurant-name").html(payload.result.restaurants[random].restaurant.name);
   $(".restaurant-location").html(payload.result.restaurants[random].restaurant.location.address);
   $("#restaurant-rating").html(`<p class="rating-style">${payload.result.restaurants[random].restaurant.user_rating.aggregate_rating}</p>`);
+  $(".restaurant-neighborhood").html(`Neighborhood: ${payload.result.restaurants[random].restaurant.location.locality}`)
   $("#image").html(`<img class='img'src="${payload.result.restaurants[random].restaurant.featured_image}">`)
   $(".cuisine").html(`Cuisines: ${payload.result.restaurants[random].restaurant.cuisines}`)
+  $("#menu").html($(location).attr(`'href', '${payload.result.restaurants[random].restaurant.menu_url}'`));
   $(".cost42").html(`If this a date situation, then the average cost for two is $${payload.result.restaurants[random].restaurant.average_cost_for_two}`)
 }).on('error', function (payload) {
 	 /*YOUR CODE GOES HERE*/
 });
+$("#cuisine-input").val("");
+if ($("#cuisine-input").val() === "" ) {
+  $("#cuisine-find-btn").text("Get another option")
+} else {
+  $("#cuisine-find-btn").text("Find This Cuisine Near Me!")
+}
+});
+
+$("#cuisine-input").on("keydown", function() {
+    $("#cuisine-find-btn").text("Find This Cuisine Near Me!")
 });
 
 // We may possibly use the below code to run another API call.
@@ -108,4 +122,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     console.log("No user is signed in")
     // No user is signed in.
   }
+});
+// document . ready end
 });
