@@ -9,7 +9,7 @@
   };
   firebase.initializeApp(config);
 
-//Zomato API to find restaurant 
+//Zomato API to find restaurant
 var apiKey = "7a92ebe9a7f0e1c5487a3ea08e3ef1e2";
 
 var rapid = new RapidAPI("default-application_5bd7a6a6e4b0a5d5a03b6ba4", "388648e2-e45b-4a7d-a751-a2e38784ef00");
@@ -22,7 +22,7 @@ var cuisine = "";
 $("#cuisine-find-btn").on("click", function(){
 cuisine = $("#cuisine-input").val().trim();
 
-rapid.call('Zomato', 'search', { 
+rapid.call('Zomato', 'search', {
 	'apiKey': '7a92ebe9a7f0e1c5487a3ea08e3ef1e2',
 	'coordinates': '42.032402, -87.741623',
 	'entityType': 'city',
@@ -34,12 +34,12 @@ rapid.call('Zomato', 'search', {
 	// 'sort': 'realDistance'
 
 }).on('success', function (payload) {
-    console.log(payload); 
+    console.log(payload);
     $(".restaurant-name").html(payload.result.restaurants[0].restaurant.name);
     $(".restaurant-location").html(payload.result.restaurants[0].restaurant.location.address);
     $(".restaurant-rating").html(payload.result.restaurants[0].restaurant.user_rating.aggregate_rating);
 }).on('error', function (payload) {
-	 /*YOUR CODE GOES HERE*/ 
+	 /*YOUR CODE GOES HERE*/
 });
 });
 
@@ -56,6 +56,7 @@ function loginWithGitHub() {
   var provider = new firebase.auth.GithubAuthProvider();
 
   firebase.auth().signInWithPopup(provider).then(function(result) {
+    window.location("homepage.html") // make second page put in here
     // This gives you a GitHub Access Token. You can use it to access the GitHub API.
     var token = result.credential.accessToken;
     // The signed-in user info.
@@ -72,14 +73,35 @@ function loginWithGitHub() {
     // The firebase.auth.AuthCredential type that was used.
     var credential = error.credential;
     // ...
-    $(".container-two").removeClass("hidden");
   });
+
+
 };
 
 function loginWithGoogle() {
   console.log("Google login button clicked")
-
 };
+
+function signout() {
+  firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+}).catch(function(error) {
+  console.log(error)
+  // An error happened.
+});
+console.log("sign out clicked")
+}
 
 $("#loginWGithub").on("click", loginWithGitHub);
 $("#loginWGoogle").on("click", loginWithGoogle);
+$("#signout").on("click", signout);
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    console.log(`${user.displayName} signed in with email: ${user.email}`)
+    // User is signed in.
+  } else {
+    console.log("No user is signed in")
+    // No user is signed in.
+  }
+});
