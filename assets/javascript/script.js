@@ -33,21 +33,22 @@ rapid.call('Zomato', 'search', {
 	'offset': '0',
 	// 'sort': 'realDistance'
 
-}).on('success', function(payload) {
-    console.log(payload);
-    $(".restaurant-name").html(payload.result.restaurants[0].restaurant.name);
-    $(".restaurant-location").html(payload.result.restaurants[0].restaurant.location.address)
-    $(".restaurant-neighborhood").html(`Neighborhood: ${payload.result.restaurants[0].restaurant.location.locality}`);
-    $("#restaurant-rating").html(`<p class="rating-style">${payload.result.restaurants[0].restaurant.user_rating.aggregate_rating}</p>`);
-    $("#image").html(`<img class='img'src="${payload.result.restaurants[0].restaurant.featured_image}">`)
-    $(".cuisine").html(`Cuisines: ${payload.result.restaurants[0].restaurant.cuisines}`)
-    $(".cost42").html(`If this a date situation, then the average cost for two is $${payload.result.restaurants[0].restaurant.average_cost_for_two}`)
-}).on('error', function(payload) {
+}).on('success', function (payload) {
+  var random = Math.floor((Math.random() * 19) + 0);
+  console.log(random);
+  console.log(payload);
+  $(".restaurant-name").html(payload.result.restaurants[random].restaurant.name);
+  $(".restaurant-location").html(payload.result.restaurants[random].restaurant.location.address);
+  $(".restaurant-rating").html(payload.result.restaurants[random].restaurant.user_rating.aggregate_rating);
+  $("#image").html(`<img class='img'src="${payload.result.restaurants[random].restaurant.featured_image}">`)
+  $(".cuisine").html(`Cuisines: ${payload.result.restaurants[random].restaurant.cuisines}`)
+  $(".cost42").html(`If this a date situation, then the average cost for two is $${payload.result.restaurants[random].restaurant.average_cost_for_two}`)
+}).on('error', function (payload) {
 	 /*YOUR CODE GOES HERE*/
 });
 });
 
-// We may possible the below code to run another API call.
+// We may possibly use the below code to run another API call.
 $("#submit-btn").on("click", function(){
 var userInput = $("#user-input").val().trim();
 console.log(userInput)
@@ -58,7 +59,6 @@ $("#user-input").val("")
 function loginWithGitHub() {
   console.log("Github login button clicked")
   var provider = new firebase.auth.GithubAuthProvider();
-
   firebase.auth().signInWithPopup(provider).then(function(result) {
     window.location("homepage.html") // make second page put in here
     // This gives you a GitHub Access Token. You can use it to access the GitHub API.
