@@ -89,6 +89,15 @@ $("#user-input").val("")
 // run AJAX call inside the button click event
 });
 
+// Google Map Initialization - needs tweaking
+var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+
 function loginWithGitHub() {
   console.log("Github login button clicked")
   var provider = new firebase.auth.GithubAuthProvider();

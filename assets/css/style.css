@@ -1,6 +1,16 @@
 body {
   background: #FBFBFB;
+  /* background: url("../images/pizza.jpg"); */
+  /* background-size: 100%; */
+  /* trying different background image options */
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .grid {
   display: grid;
   height: 800px;
@@ -170,3 +180,8 @@ p .price-text {
   top: 80px;
   background-color: #2196F3;
 }
+
+#map {
+  height: 100%;
+}
+
