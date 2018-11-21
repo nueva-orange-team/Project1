@@ -59,11 +59,11 @@ rapid.call('Zomato', 'search', {
 
 
     console.log(shortenSuffix)
-  $(".restaurant-location").html(shortenSuffix);
+  $(".restaurant-location").html(`${shortenSuffix}`);
   $("#restaurant-rating").html(`<p class="rating-style">${payload.result.restaurants[random].restaurant.user_rating.aggregate_rating}</p>`);
-  $(".restaurant-neighborhood").html(`Neighborhood: ${payload.result.restaurants[random].restaurant.location.locality}`)
+  $(".restaurant-neighborhood").html(`neighborhood:<br>${payload.result.restaurants[random].restaurant.location.locality}`)
   $("#image").html(`<img class='img'src="${payload.result.restaurants[random].restaurant.featured_image}">`)
-  $(".cuisine").html(`<span class="cuisine-text">Cuisines: <br>${payload.result.restaurants[random].restaurant.cuisines}</span>`)
+  $(".cuisine").html(`<span class="cuisine-text">Cuisines:<br>${payload.result.restaurants[random].restaurant.cuisines}</span>`)
   $("#menu").html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text">See menu<span></a>`);
   $(".cost42").html(`<p class="average-cost"><span class="cost-text">Average cost for two:</span><br><span class="price-text">$${payload.result.restaurants[random].restaurant.average_cost_for_two}</span></p>`)
 }).on('error', function (payload) {
