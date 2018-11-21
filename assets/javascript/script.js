@@ -60,8 +60,8 @@ rapid.call('Zomato', 'search', {
 
     console.log(shortenSuffix)
   $(".restaurant-location").html(`${shortenSuffix}`);
-  $("#restaurant-rating").html(`<p class="rating-style">${payload.result.restaurants[random].restaurant.user_rating.aggregate_rating}</p>`);
-  $(".restaurant-neighborhood").html(`neighborhood:<br>${payload.result.restaurants[random].restaurant.location.locality}`)
+  $("#restaurant-rating").html(`<p class="rating-style">${payload.result.restaurants[random].restaurant.user_rating.aggregate_rating}<span class="out-of-5">/5</span></p>`);
+  $(".restaurant-neighborhood").html(`Neighborhood:<br>${payload.result.restaurants[random].restaurant.location.locality}`)
   $("#image").html(`<img class='img'src="${payload.result.restaurants[random].restaurant.featured_image}">`)
   $(".cuisine").html(`<span class="cuisine-text">Cuisines:<br>${payload.result.restaurants[random].restaurant.cuisines}</span>`)
   $("#menu").html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text">See menu<span></a>`);
@@ -90,13 +90,13 @@ $("#user-input").val("")
 });
 
 // Google Map Initialization - needs tweaking
-var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
+// var map;
+//       function initMap() {
+//         map = new google.maps.Map(document.getElementById('map'), {
+//           center: {lat: -34.397, lng: 150.644},
+//           zoom: 8
+//         });
+//       }
 
 function loginWithGitHub() {
   console.log("Github login button clicked")

@@ -5,23 +5,25 @@ body {
   /* trying different background image options */
 }
 
-html, body {
+/* html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-}
+} */
 
 .grid {
   display: grid;
-  height: 800px;
-  width: 1920px;
-  grid-template-columns: 300px 400px auto repeat(2, 300px);
+  height: 717px;
+  width: 1440px;
+  grid-template-columns: 3fr 3fr 5fr 3fr 3fr
+  /* grid-template-columns: 300px 300px 500px 300px 300px; */
   grid-template-rows: repeat(8, 100px)
 }
+
 .hidden {
   display: none;
 }
-.
+
 
 
 .input-css, button {
@@ -42,7 +44,8 @@ h3 {
 .cuisine{
   grid-row: 3/4;
   grid-column: 2/3;
-  text-align: center;
+align-self: flex-end;
+ text-align: center;
 }
 
 .cuisine-text{
@@ -52,7 +55,7 @@ h3 {
 
 #menu{
   grid-column: 4/5;
-  grid-row: 4/5;
+  grid-row: 5/6;
   text-align: center;
 }
 
@@ -79,11 +82,15 @@ a {
   height: 35%;
 }
 #restaurant-rating {
-  font-size: 40px;
-  grid-row: 2/3;
-  grid-column: 2/3;
-  justify-self: end;
-  align-self: flex-end;
+  font-size: 70px;
+  grid-row: 4/5;
+  grid-column: 4/5;
+  justify-self: center;
+  align-self:flex-start;
+}
+.out-of-5 {
+ font-size: 50px;
+ opacity: 0.7;
 }
 
 #image {
@@ -113,7 +120,7 @@ a {
   font-weight: bold;
   align-self: center;
   align-content: center;
-  grid-row: 2/4;
+  grid-row: 3/4;
   grid-column: 3/4;
 }
 
@@ -138,7 +145,7 @@ text-align: center;
 
 .cost42 {
   grid-column: 4/5;
-  grid-row: 2/3;
+  grid-row: 3/4;
 }
 p .cost-text {
  font-size: 32px;
@@ -184,4 +191,3 @@ p .price-text {
 #map {
   height: 100%;
 }
-
