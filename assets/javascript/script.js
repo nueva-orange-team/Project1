@@ -59,8 +59,8 @@ $(document).ready(function() {
 
 
       console.log(shortenSuffix)
-      $("#cuisine-input").css("grid-row", "6/7").css("grid-column", "3/4");
-      $("#cuisine-find-btn").css("grid-row", "7/8").css("grid-column", "3/4");
+      $("#cuisine-input").css("grid-row", "6/7").css("grid-column", "3/4").css("width", "75%").css("align-self", "start");
+      $("#cuisine-find-btn").css("grid-row", "7/8").css("grid-column", "3/4").css("margin-top", "0px");
       $(".restaurant-location").css("grid-column", "3/4");
       $(".restaurant-name").css("grid-column", "3/4").css("align-self", "center");
       $(".cuisine").css("align-self", "center");
