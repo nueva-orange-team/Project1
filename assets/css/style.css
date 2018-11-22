@@ -88,7 +88,7 @@ a {
   grid-row: 4/5;
   grid-column: 4/5;
   justify-self: center;
-  align-self:flex-start;
+  align-self: center;
 }
 .out-of-5 {
  font-size: 50px;
@@ -98,6 +98,8 @@ a {
 #image {
   grid-row: 4/7;
   grid-column: 2/3;
+  justify-self: center;
+
 }
 #cuisine-input {
   width: 75%;
@@ -148,6 +150,7 @@ text-align: center;
 }
 
 .cost42 {
+  align-self: center;
   grid-column: 4/5;
   grid-row: 3/4;
 }

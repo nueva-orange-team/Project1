@@ -62,7 +62,8 @@ $(document).ready(function() {
       $("#cuisine-input").css("grid-row", "6/7").css("grid-column", "3/4");
       $("#cuisine-find-btn").css("grid-row", "7/8").css("grid-column", "3/4");
       $(".restaurant-location").css("grid-column", "3/4");
-      $(".restaurant-name").css("grid-column", "3/4");
+      $(".restaurant-name").css("grid-column", "3/4").css("align-self", "center");
+      $(".cuisine").css("align-self", "center");
       $(".restaurant-location").html(`${shortenSuffix}`);
       $("#restaurant-rating").html(`<p class="rating-style">${payload.result.restaurants[random].restaurant.user_rating.aggregate_rating}<span class="out-of-5">/5</span></p>`);
       $(".restaurant-neighborhood").html(`Neighborhood:<br>${payload.result.restaurants[random].restaurant.location.locality}`)
