@@ -59,14 +59,16 @@ $(document).ready(function() {
 
 
       console.log(shortenSuffix)
-      $("#cuisine-input").css("grid-row", "6/7");
-      $("#cuisine-find-btn").css("grid-row", "7/8");
+      $("#cuisine-input").css("grid-row", "6/7").css("grid-column", "3/4");
+      $("#cuisine-find-btn").css("grid-row", "7/8").css("grid-column", "3/4");
+      $(".restaurant-location").css("grid-column", "3/4");
+      $(".restaurant-name").css("grid-column", "3/4");
       $(".restaurant-location").html(`${shortenSuffix}`);
       $("#restaurant-rating").html(`<p class="rating-style">${payload.result.restaurants[random].restaurant.user_rating.aggregate_rating}<span class="out-of-5">/5</span></p>`);
       $(".restaurant-neighborhood").html(`Neighborhood:<br>${payload.result.restaurants[random].restaurant.location.locality}`)
       $("#image").html(`<img class='img'src="${payload.result.restaurants[random].restaurant.featured_image}">`)
-      $(".cuisine").html(`<span class="cuisine-text">Cuisines:<br>${payload.result.restaurants[random].restaurant.cuisines}</span>`)
-      $("#menu").html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text">See menu<span></a>`);
+      $(".cuisine").html(`<span class="cuisine-text"><p>Cuisines:<br>${payload.result.restaurants[random].restaurant.cuisines}</p></span>`)
+      $("#menu").html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text"><p>See menu</p><span></a>`);
       $(".cost42").html(`<p class="average-cost"><span class="cost-text">Average cost for two:</span><br><span class="price-text">$${payload.result.restaurants[random].restaurant.average_cost_for_two}</span></p>`)
     }).on('error', function(payload) {
       /*YOUR CODE GOES HERE*/

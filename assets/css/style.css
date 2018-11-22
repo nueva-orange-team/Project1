@@ -1,7 +1,7 @@
 body {
-  background: #FBFBFB;
-  /* background: url("../images/pizza.jpg"); */
-  /* background-size: 100%; */
+  /* background: #FBFBFB; */
+  background: url("/assets/images/237779-P2RAVC-884.jpg");
+  background-size: 100%;
   /* trying different background image options */
 }
 
@@ -24,7 +24,9 @@ body {
   display: none;
 }
 
-
+p, h1, h2, h3 {
+  color: white;
+}
 
 .input-css, button {
   width: 275px;
@@ -98,12 +100,12 @@ a {
   grid-column: 2/3;
 }
 #cuisine-input {
-  width: 80%;
+  width: 75%;
   justify-self: center;
   height: 50px;
   align-self: end;
   grid-row: 4/5;
-  grid-column: 3/4 ;
+  grid-column: 2/4 ;
 }
 
 #cuisine-find-btn {
@@ -112,17 +114,18 @@ a {
   align-self: start;
   justify-self: center;
   grid-row: 5/6;
-  grid-column: 3/4 ;
+  grid-column: 2/4 ;
 }
 
 .restaurant-name {
+  margin-right: 50px;
   text-align: center;
   font-size: 45px;
   font-weight: bold;
-  align-self: center;
+  align-self: flex-end;
   align-content: center;
   grid-row: 3/4;
-  grid-column: 3/4;
+  grid-column: 2/4;
 }
 
 .restaurant-location{
@@ -132,7 +135,7 @@ a {
   align-self: start;
   align-content: center;
   grid-row: 4/5;
-  grid-column: 3/4;
+  grid-column: 2/4;
 }
 
 
