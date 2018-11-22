@@ -58,7 +58,11 @@ align-self: center;
 #menu{
   grid-column: 4/5;
   grid-row: 5/6;
+  align-self: center;
   text-align: center;
+  border-radius: 5px;
+  padding: -25px;
+
 }
 
 .menu-text {
@@ -66,8 +70,9 @@ font-size: 35px;
 color: black;
 }
 
-.menu-text:hover {
-color: gold;
+#menu:hover {
+opacity: 1;
+background: white; 
 }
 
 a {
@@ -79,7 +84,8 @@ a {
   padding-left: 10px;
   padding-right: 10px;
   text-align: center;
-  background: blue;
+  background: #2E6D02;
+  opacity: 0.9;
   color: white;
   height: 35%;
 }
@@ -155,15 +161,16 @@ text-align: center;
   grid-row: 3/4;
 }
 p .cost-text {
- font-size: 32px;
+ font-size: 25px;
 }
 
 .average-cost {
   text-align: center;
+  opacity: 0.9;
 }
 
 p .price-text {
-  font-size: 55px;
+  font-size: 52px;
 }
 
 
