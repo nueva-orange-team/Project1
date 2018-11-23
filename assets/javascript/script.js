@@ -59,14 +59,47 @@ $(document).ready(function() {
 
 
       console.log(shortenSuffix)
-      $("#cuisine-input").css("grid-row", "6/7");
-      $("#cuisine-find-btn").css("grid-row", "7/8");
+      $("#cuisine-input")
+        .css("grid-row", "6/7")
+        .css("grid-column", "3/4")
+        .css("width", "75%")
+        .css("align-self", "start");
+      $(".average-cost").css("align-self", "center")
+      $(".cost42")
+        .css("background", "#990000")
+        .css("opacity", "0.9")
+        .css("border-radius","5px");
+      $("#cuisine-find-btn")
+        .css("grid-row", "7/8")
+        .css("grid-column", "3/4")
+        .css("margin-top", "0px");
+      $(".restaurant-location")
+        .css("grid-column", "3/4")
+        .css("background", "grey");
+      $(".restaurant-name")
+        .css("grid-column", "3/4")
+        .css("align-self", "center")
+        .css("background", "#2E6D02");
+      $(".cuisine").css("align-self", "center");
       $(".restaurant-location").html(`${shortenSuffix}`);
       $("#restaurant-rating").html(`<p class="rating-style">${payload.result.restaurants[random].restaurant.user_rating.aggregate_rating}<span class="out-of-5">/5</span></p>`);
       $(".restaurant-neighborhood").html(`Neighborhood:<br>${payload.result.restaurants[random].restaurant.location.locality}`)
       $("#image").html(`<img class='img'src="${payload.result.restaurants[random].restaurant.featured_image}">`)
-      $(".cuisine").html(`<span class="cuisine-text">Cuisines:<br>${payload.result.restaurants[random].restaurant.cuisines}</span>`)
-      $("#menu").html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text">See menu<span></a>`);
+      $(".cuisine").html(`<span class="cuisine-text"><p>Cuisines:<br>${payload.result.restaurants[random].restaurant.cuisines}</p></span>`)
+      $("#menu")
+      .html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text"><p>See menu</p><span></a>`)
+      .css("background", "black")
+      .css("opacity", "0.9");
+      $("#menu").mouseover(function() {
+        $(this).css("opacity","1");
+        $(this).css("background","#3a3636")
+
+      });
+      $("#menu").mouseout(function() {
+        $(this).css("opacity","0.9")
+        $(this).css("background","black")
+
+      });
       $(".cost42").html(`<p class="average-cost"><span class="cost-text">Average cost for two:</span><br><span class="price-text">$${payload.result.restaurants[random].restaurant.average_cost_for_two}</span></p>`)
     }).on('error', function(payload) {
       /*YOUR CODE GOES HERE*/
