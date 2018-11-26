@@ -1,3 +1,38 @@
+*{box-sizing: border-box;
+}
+body {
+  /* background: #FBFBFB; */
+  background: url("/assets/images/237779-P2RAVC-884.jpg");
+  background-size: 100%;
+  /* trying different background image options */
+}
+
+/* html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+} */
+
+.grid {
+  display: grid;
+  height: 717px;
+  width: 1440px;
+  grid-template-columns: 3fr 3fr 5fr 3fr 3fr
+  /* grid-template-columns: 300px 300px 500px 300px 300px; */
+  grid-template-rows: repeat(8, 100px);
+  position: relative;
+  bottom: 60px;
+  right: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+p, h1, h2, h3 {
+  color: white;
+}
+
 .input-css, button {
   width: 275px;
   height: 50px;
@@ -10,9 +45,161 @@ h3 {
   text-align: center;
 }
 
-.hidden {
-  display: none;
+#title{
+  font-size: 130px;
+  position: relative;
+  /* -webkit-mask-image: url(/Users/codymj/Project1/assets/images/pepporoni.png); */
+  mask-image: url(/Users/codymj/Project1/assets/images/pepporoni.png);
 }
+.img {
+  width: 400px;
+  height: 300px;
+}
+.cuisine{
+  grid-row: 3/4;
+  grid-column: 2/3;
+align-self: center;
+ text-align: center;
+}
+
+.cuisine-text{
+  font-size: 25px;
+  color: black;
+}
+
+#menu{
+  grid-column: 4/5;
+  grid-row: 5/6;
+  align-self: center;
+  text-align: center;
+  border-radius: 5px;
+  padding: -25px;
+
+}
+
+.menu-text {
+font-size: 35px;
+color: black;
+}
+
+#menu:hover {
+opacity: 1;
+background: white;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.rating-style {
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  background: #2E6D02;
+  opacity: 0.9;
+  color: white;
+  height: 35%;
+}
+#restaurant-rating {
+  font-size: 70px;
+  grid-row: 4/5;
+  grid-column: 4/5;
+  justify-self: center;
+  align-self: center;
+}
+.out-of-5 {
+ font-size: 50px;
+ opacity: 0.7;
+}
+
+#image {
+  grid-row: 4/7;
+  grid-column: 2/3;
+  justify-self: center;
+
+}
+#cuisine-input {
+  width: 75%;
+  justify-self: center;
+  height: 50px;
+  align-self: end;
+  grid-row: 4/5;
+  grid-column: 2/4 ;
+}
+
+#cuisine-find-btn {
+  margin: 0 auto;
+  margin-top: 30px;
+  align-self: flex-start;
+  justify-self: center;
+  grid-row: 5/6;
+  grid-column: 2/4 ;
+}
+
+.restaurant-name {
+  margin-bottom: 0px;
+  margin-right: 50px;
+  width: 90%;
+  height: 90%;
+  text-align: center;
+  font-size: 45px;
+  font-weight: bold;
+  align-self: flex-end;
+  align-content: center;
+  grid-row: 3/4;
+  grid-column: 2/4;
+  border-radius: 5px;
+
+}
+
+.restaurant-location {
+  width: 90%;
+  height: 90%;
+  text-align: center;
+  word-wrap: break-word;
+  font-size: 35px;
+  align-self: center;
+  align-content: center;
+  grid-row: 4/5;
+  grid-column: 2/4;
+  border-radius: 5px;
+}
+
+
+
+
+p.restaurant-neighborhood {
+  width: 90%;
+  height: 90%;
+  font-size: 30px;
+  grid-row: 5/6;
+  grid-column: 3/4;
+text-align: center;
+
+}
+
+.cost42 {
+  align-self: center;
+  grid-column: 4/5;
+  grid-row: 3/4;
+}
+p .cost-text {
+ font-size: 25px;
+}
+
+.average-cost {
+  text-align: center;
+  opacity: 0.9;
+}
+
+p .price-text {
+  font-size: 52px;
+}
+
+
+
+
 #mySidenav a {
   position: absolute;
   left: -80px;
@@ -38,3 +225,9 @@ h3 {
   top: 80px;
   background-color: #2196F3;
 }
+
+/* Set the size of the div element that contains the map */
+#map {
+  height: 400px;  /* The height is 400 pixels */
+  width: 100%;  /* The width is the width of the web page */
+ }
