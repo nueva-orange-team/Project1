@@ -192,9 +192,9 @@ function initMap() {
   // The map, centered at Chicago
   var map = new google.maps.Map(
       document.getElementById('map'), {zoom: 4, center: chicago});
-  // The marker, positioned at 
+  // The marker, positioned at
   var marker = new google.maps.Marker({position: chicago, map: map});
-
+}
   function loginWithGitHub() {
     console.log("Github login button clicked")
     var provider = new firebase.auth.GithubAuthProvider();
