@@ -41,6 +41,7 @@ $(document).ready(function() {
     }).on('success', function(payload) {
       var random = Math.floor((Math.random() * 19) + 0);
       $(".modal-btn").removeClass("hidden");
+      initMap();
       console.log(random);
       console.log(payload);
       $(".restaurant-name").html(payload.result.restaurants[random].restaurant.name);
@@ -124,15 +125,20 @@ $(document).ready(function() {
     // run AJAX call inside the button click event
   });
 
-   // Initialize and add the map
+   
+})
+
+// Initialize and add the map
 function initMap() {
   // The location of Chicago
-  var chicago = {lat: 41.881832, lng: -87.623177};
-  // The map, centered at Chicago
+  var chicago = {lat: 41.881, lng: -87.623};
+  // The map, centered on Chicago
   var map = new google.maps.Map(
       document.getElementById('map'), {zoom: 4, center: chicago});
-  // The marker, positioned at 
+  // The marker, positioned 
   var marker = new google.maps.Marker({position: chicago, map: map});
+}
+
 
   function loginWithGitHub() {
     console.log("Github login button clicked")
