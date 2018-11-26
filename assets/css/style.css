@@ -2,7 +2,7 @@
 }
 body {
   /* background: #FBFBFB; */
-  background: url("../images/237779-P2RAVC-884.jpg");
+  background: url("/assets/images/237779-P2RAVC-884.jpg");
   background-size: 100%;
   /* trying different background image options */
 }
@@ -17,7 +17,7 @@ body {
   display: grid;
   height: 717px;
   width: 1440px;
-  grid-template-columns: 3fr 3fr 5fr 3fr 3fr;
+  grid-template-columns: 3fr 3fr 5fr 3fr 3fr
   /* grid-template-columns: 300px 300px 500px 300px 300px; */
   grid-template-rows: repeat(8, 100px);
   position: relative;
@@ -30,7 +30,7 @@ body {
 }
 
 p, h1, h2, h3 {
-  color: rgb(241, 237, 237);
+  color: white;
 }
 
 .input-css, button {
@@ -222,14 +222,12 @@ p .price-text {
 }
 
 #loginWGoogle {
-  top: 110px;
+  top: 80px;
   background-color: #2196F3;
 }
 
 /* Set the size of the div element that contains the map */
 #map {
-  height: 200px;  /* The height is 400 pixels */
-  width: 200px;  /* The width is the width of the web page */
-  display: block;
-  margin: 0 auto;
+  height: 400px;  /* The height is 400 pixels */
+  width: 100%;  /* The width is the width of the web page */
  }
