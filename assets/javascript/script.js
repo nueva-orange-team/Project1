@@ -236,7 +236,6 @@ function initMap() {
   }
 
   $("#loginWGithub").on("click", loginWithGitHub);
-  $("#loginWGoogle").on("click", loginWithGoogle);
   $("#signout").on("click", signout);
 
   firebase.auth().onAuthStateChanged(function(user) {
@@ -253,3 +252,11 @@ function initMap() {
   // });
   // document . ready end
 });
+
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}

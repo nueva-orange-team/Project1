@@ -12,6 +12,7 @@
   <link rel="stylesheet"  href="assets/css/iziModal.min.css">
   <link rel="stylesheet"  href="assets/css/style.css">
   <script src="https://storage.googleapis.com/code-snippets/rapidapi.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 </head>
 
 <body>
@@ -31,10 +32,11 @@
     <p class="restaurant-neighborhood"></p>
     <input type="text" name="" value="" placeholder="Cuisine Type" class="form-control input2-css" id="cuisine-input">
     <button type="button" name="" class="btn btn-secondary" id="cuisine-find-btn">Find This Cuisine Near Me!</button>
-
     <div class="cost42"></div>
     <p class="cuisine"></p>
     <div id="restaurant-rating"></div>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
 
     <div id="menu"></div>
 
@@ -57,6 +59,10 @@
     <script src="assets/javascript/script.js"></script>
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGtG-_pUgmJSvJTZvIq7DM-wghiHosmGo&callback=initMap" -->
     <!-- async defer></script> -->
+    <!--- Google Authentification Key-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
 
 </body>
 
