@@ -1,3 +1,5 @@
+*{box-sizing: border-box;
+}
 body {
   /* background: #FBFBFB; */
   background: url("/assets/images/237779-P2RAVC-884.jpg");
@@ -17,7 +19,10 @@ body {
   width: 1440px;
   grid-template-columns: 3fr 3fr 5fr 3fr 3fr
   /* grid-template-columns: 300px 300px 500px 300px 300px; */
-  grid-template-rows: repeat(8, 100px)
+  grid-template-rows: repeat(8, 100px);
+  position: relative;
+  bottom: 60px;
+  right: 20px;
 }
 
 .hidden {
@@ -38,6 +43,13 @@ h1 {
 }
 h3 {
   text-align: center;
+}
+
+#title{
+  font-size: 130px;
+  position: relative;
+  /* -webkit-mask-image: url(/Users/codymj/Project1/assets/images/pepporoni.png); */
+  mask-image: url(/Users/codymj/Project1/assets/images/pepporoni.png);
 }
 .img {
   width: 400px;
@@ -72,7 +84,7 @@ color: black;
 
 #menu:hover {
 opacity: 1;
-background: white; 
+background: white;
 }
 
 a {
@@ -126,7 +138,10 @@ a {
 }
 
 .restaurant-name {
+  margin-bottom: 0px;
   margin-right: 50px;
+  width: 90%;
+  height: 90%;
   text-align: center;
   font-size: 45px;
   font-weight: bold;
@@ -134,20 +149,29 @@ a {
   align-content: center;
   grid-row: 3/4;
   grid-column: 2/4;
+  border-radius: 5px;
+
 }
 
-.restaurant-location{
+.restaurant-location {
+  width: 90%;
+  height: 90%;
   text-align: center;
   word-wrap: break-word;
   font-size: 35px;
-  align-self: start;
+  align-self: center;
   align-content: center;
   grid-row: 4/5;
   grid-column: 2/4;
+  border-radius: 5px;
 }
 
 
+
+
 p.restaurant-neighborhood {
+  width: 90%;
+  height: 90%;
   font-size: 30px;
   grid-row: 5/6;
   grid-column: 3/4;
