@@ -74,32 +74,93 @@ $(document).ready(function() {
         .css("grid-column", "3/4")
         .css("margin-top", "0px");
       $(".restaurant-location")
+        .html(`${shortenSuffix}`)
         .css("grid-column", "3/4")
-        .css("background", "grey");
+        .css("background", "grey")
+        .css("opacity", "0.9")
+        .css("border", "10px solid #2E6D02")
+        .css("align-self", "center");
       $(".restaurant-name")
         .css("grid-column", "3/4")
         .css("align-self", "center")
-        .css("background", "#2E6D02");
+        .css("background", "grey")
+        .css("opacity", "0.9")
+        .css("border", "10px solid #2E6D02");
+        $("p.restaurant-name").css("align-self", "center")
+
       $(".cuisine").css("align-self", "center");
-      $(".restaurant-location").html(`${shortenSuffix}`);
       $("#restaurant-rating").html(`<p class="rating-style">${payload.result.restaurants[random].restaurant.user_rating.aggregate_rating}<span class="out-of-5">/5</span></p>`);
-      $(".restaurant-neighborhood").html(`Neighborhood:<br>${payload.result.restaurants[random].restaurant.location.locality}`)
-      $("#image").html(`<img class='img'src="${payload.result.restaurants[random].restaurant.featured_image}">`)
+      $(".restaurant-neighborhood")
+        .html(`Neighborhood:<br>${payload.result.restaurants[random].restaurant.location.locality}`)
+        .css("background", "grey")
+        .css("opacity", "0.9")
+        .css("border", "10px solid #2E6D02");
+        var imgNum = Math.floor((Math.random() * 50) + 0);
+      $("#image").html(`<img src="${payload.result.restaurants[random].restaurant.featured_image}" class="img" data-lightbox="image-${imgNum}">`)
       $(".cuisine").html(`<span class="cuisine-text"><p>Cuisines:<br>${payload.result.restaurants[random].restaurant.cuisines}</p></span>`)
+      // $("#menu")
+      //   .html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text"><p>See menu</p><span></a>`)
+      //   .css("background", "black")
+      //   .css("opacity", "0.9")
+      //   .mouseover(function() {
+      //     $(this).css("opacity","1");
+      //     $(this).css("background","#3a3636")
+      //   })
+      //   .mouseout(function() {
+      //     $(this).css("opacity","0.9")
+      //     $(this).css("background","black")
+      //   });
+
       $("#menu")
-      .html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text"><p>See menu</p><span></a>`)
-      .css("background", "black")
-      .css("opacity", "0.9");
-      $("#menu").mouseover(function() {
-        $(this).css("opacity","1");
-        $(this).css("background","#3a3636")
+        .html(`<a href="#" data-izimodal-open="#modal" >Menu</a>`)
+        .append(`<div id="modal" class="modal"></div>`)
+        // .css("background", "black")
+        // .css("opacity", "0.9")
+        // .mouseover(function() {
+        //   $(this).css("opacity","1");
+        //   $(this).css("background","#3a3636")
+        // })
+        // .mouseout(function() {
+        //   $(this).css("opacity","0.9")
+        //   $(this).css("background","black")
+        // });
+      // $('#modal-iframe').iziModal('open')
+//       $("#modal-iframe").iziModal({
+//     iframe: true,
+//     iframeHeight: 800,
+//     iframeURL: "<a class="vglnk" href="http://izimodal.dolce.ninja" rel="nofollow"><span>http</span><span>://</span><span>izimodal</span><span>.</span><span>dolce</span><span>.</span><span>ninja</span></a>"
+// });
+$(".modal").iziModal({
+    iframe: true,
+    iframeHeight: 800,
+    iframeURL: "https://www.zomato.com/chicago/amarit-south-loop/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1"
+});// $(document).on('click', '.trigger', function (event) {
+//     event.preventDefault();
+//     console.log("button clicked")
+//     $('#modal-iframe').iziModal('open')
+// });
 
-      });
-      $("#menu").mouseout(function() {
-        $(this).css("opacity","0.9")
-        $(this).css("background","black")
-
-      });
+    // $(document).on('click', '.trigger', function (event) {
+    // event.preventDefault();
+    // $("#menu")
+    //   .html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text"><p>See menu</p><span></a>`)
+      // .css("background", "black")
+      // .css("opacity", "0.9")
+      // .mouseover(function() {
+      //   $(this).css("opacity","1");
+      //   $(this).css("background","#3a3636")
+      // })
+      // .mouseout(function() {
+      //   $(this).css("opacity","0.9")
+      //   $(this).css("background","black")
+      // });
+    // $('#modal').iziModal('setZindex', 99999);
+    // $('#modal').iziModal('open', { zindex: 99999 });
+    // $('#modal').iziModal('open');
+    // $("#modal").iziModal({
+    //   iframeURL: payload.result.restaurants[random].restaurant.menu_url,
+    // });
+    // });
       $(".cost42").html(`<p class="average-cost"><span class="cost-text">Average cost for two:</span><br><span class="price-text">$${payload.result.restaurants[random].restaurant.average_cost_for_two}</span></p>`)
     }).on('error', function(payload) {
       /*YOUR CODE GOES HERE*/
@@ -187,5 +248,8 @@ function initMap() {
       // No user is signed in.
     }
   });
+  // $("#modal").iziModal({
+  //   iframeURL:
+  // });
   // document . ready end
 });
