@@ -231,3 +231,35 @@ p .price-text {
   height: 200px;  /* The height is 400 pixels */
   width: 50%;  /* The width is the width of the web page */
  }
+.bttn2 {
+  font-size: 15x;
+  border-radius: 8px;
+  background-color: white;
+}
+.bttn1 {
+  border-radius: 8px;
+  background-color: white;
+  font-size: 15px;
+}
+.signbttn {
+  color: white;
+  font-size: 20px;
+}
+.bttn1 {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.bttn2 {-webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+
+}
+
+.bttn1:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+.bttn2:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+
+}
