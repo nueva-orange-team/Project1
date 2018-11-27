@@ -2,7 +2,7 @@
 }
 body {
   /* background: #FBFBFB; */
-  background: url("/assets/images/237779-P2RAVC-884.jpg");
+  background: url("../images/237779-P2RAVC-884.jpg");
   background-size: 100%;
   /* trying different background image options */
 }
@@ -222,12 +222,12 @@ p .price-text {
 }
 
 #loginWGoogle {
-  top: 80px;
+  top: 110px;
   background-color: #2196F3;
 }
 
 /* Set the size of the div element that contains the map */
 #map {
-  height: 400px;  /* The height is 400 pixels */
-  width: 100%;  /* The width is the width of the web page */
+  height: 200px;  /* The height is 400 pixels */
+  width: 50%;  /* The width is the width of the web page */
  }
