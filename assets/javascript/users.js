@@ -6,4 +6,9 @@ var config = {
     storageBucket: "projectone-82a10.appspot.com",
     messagingSenderId: "1024336087473"
   };
-  firebase.initializeApp(config);
+firebase.initializeApp(config);
+//reference to the firebase database
+var database = firebase.database();
+//users, look at restaraunts 
+//cache it into arrays that allow them to look them up
+
