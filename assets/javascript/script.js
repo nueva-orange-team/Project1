@@ -16,8 +16,10 @@ $(document).ready(function() {
   var rapid = new RapidAPI("default-application_5bd7a6a6e4b0a5d5a03b6ba4", "388648e2-e45b-4a7d-a751-a2e38784ef00");
 
   //variable to hold what kind of restaurant user is looking for
-  var cuisine = "";
-
+  var cuisine;
+  var address;
+  var map;
+  var marker;
 
   //API call will get restaurants of type var cuisine in "searc query" near "coordinates" pre-set below
   $("#cuisine-find-btn").on("click", function() {
@@ -25,7 +27,7 @@ $(document).ready(function() {
 
     rapid.call('Zomato', 'search', {
       'apiKey': `${apiKey}`,
-      'coordinates': '42.032402, -87.741623',
+      'coordinates': stringLat, stringLon,
       'entityType': 'city',
       'count': '20',
       'radiusSearch': '10000',
@@ -44,7 +46,7 @@ $(document).ready(function() {
       console.log(random);
       console.log(payload);
       $(".restaurant-name").html(payload.result.restaurants[random].restaurant.name);
-      var address = payload.result.restaurants[random].restaurant.location.address
+      address = payload.result.restaurants[random].restaurant.location.address
       console.log(address);
       var shortenSuffix = address
         .replace("Avenue", "Ave.")
@@ -185,16 +187,21 @@ $(".modal").iziModal({
     // run AJAX call inside the button click event
   });
 
+
+
    // Initialize and add the map
 function initMap() {
   // The location of Chicago
   var chicago = {lat: 41.881832, lng: -87.623177};
   // The map, centered at Chicago
-  var map = new google.maps.Map(
+  map = new google.maps.Map(
       document.getElementById('map'), {zoom: 4, center: chicago});
   // The marker, positioned at
-  var marker = new google.maps.Marker({position: chicago, map: map});
-}
+  marker = new google.maps.Marker({position: chicago, map: map});
+};
+
+initMap();
+
   function loginWithGitHub() {
     console.log("Github login button clicked")
     var provider = new firebase.auth.GithubAuthProvider();
