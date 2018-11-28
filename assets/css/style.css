@@ -263,3 +263,13 @@ p .price-text {
   color: white;
 
 }
+#title {
+  font-family: 'Cormorant Upright', serif; font-size: 40px;
+}
+.restaurant-name {
+font-family: 'Cormorant Upright', serif; font-size: 40px;
+}
+.restaurant-location {
+font-family: 'Cormorant Upright', serif; font-size: 40px;
+
+}
