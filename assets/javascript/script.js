@@ -16,13 +16,35 @@ $(document).ready(function() {
   var rapid = new RapidAPI("default-application_5bd7a6a6e4b0a5d5a03b6ba4", "388648e2-e45b-4a7d-a751-a2e38784ef00");
 
   //variable to hold what kind of restaurant user is looking for
-  var cuisine = "";
+  var cuisine;
+  var address;
+  var map;
+  var marker;
+  var stringLat;
+  var stringLon;
 
+  navigator.geolocation.getCurrentPosition(gotLocation);
 
+  function gotLocation(hunger) {
+      $("#hud").hide();
+  console.log(hunger);
+     var lat = hunger.coords.latitude;
+     var lon = hunger.coords.longitude;
+  return
+     stringLat = JSON.stringify(lat);
+     stringLon = JSON.stringify(lon);
+  
+  //    console.log(lat);
+  //    console.log(lon);
+  
+     console.log(stringLat);
+     console.log(stringLon);
+     console.log(typeof(stringLat));
+  }
   //API call will get restaurants of type var cuisine in "searc query" near "coordinates" pre-set below
   $("#cuisine-find-btn").on("click", function() {
     cuisine = $("#cuisine-input").val().trim();
-
+    gotLocation();
     rapid.call('Zomato', 'search', {
       'apiKey': `${apiKey}`,
       'coordinates': '42.032402, -87.741623',
@@ -55,8 +77,7 @@ $(document).ready(function() {
         .replace("Street,", "St.")
         .replace("North", "N")
         .replace("South", "S")
-      // .replace("South", "S.")
-
+      
 
 
       console.log(shortenSuffix)
@@ -112,56 +133,8 @@ $(document).ready(function() {
       //     $(this).css("background","black")
       //   });
 
-      $("#menu")
-        .html(`<a href="#" data-izimodal-open="#modal" >Menu</a>`)
-        .append(`<div id="modal" class="modal"></div>`)
-        // .css("background", "black")
-        // .css("opacity", "0.9")
-        // .mouseover(function() {
-        //   $(this).css("opacity","1");
-        //   $(this).css("background","#3a3636")
-        // })
-        // .mouseout(function() {
-        //   $(this).css("opacity","0.9")
-        //   $(this).css("background","black")
-        // });
-      // $('#modal-iframe').iziModal('open')
-//       $("#modal-iframe").iziModal({
-//     iframe: true,
-//     iframeHeight: 800,
-//     iframeURL: "<a class="vglnk" href="http://izimodal.dolce.ninja" rel="nofollow"><span>http</span><span>://</span><span>izimodal</span><span>.</span><span>dolce</span><span>.</span><span>ninja</span></a>"
-// });
-$(".modal").iziModal({
-    iframe: true,
-    iframeHeight: 800,
-    iframeURL: "https://www.zomato.com/chicago/amarit-south-loop/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1"
-});// $(document).on('click', '.trigger', function (event) {
-//     event.preventDefault();
-//     console.log("button clicked")
-//     $('#modal-iframe').iziModal('open')
-// });
-
-    // $(document).on('click', '.trigger', function (event) {
-    // event.preventDefault();
-    // $("#menu")
-    //   .html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text"><p>See menu</p><span></a>`)
-      // .css("background", "black")
-      // .css("opacity", "0.9")
-      // .mouseover(function() {
-      //   $(this).css("opacity","1");
-      //   $(this).css("background","#3a3636")
-      // })
-      // .mouseout(function() {
-      //   $(this).css("opacity","0.9")
-      //   $(this).css("background","black")
-      // });
-    // $('#modal').iziModal('setZindex', 99999);
-    // $('#modal').iziModal('open', { zindex: 99999 });
-    // $('#modal').iziModal('open');
-    // $("#modal").iziModal({
-    //   iframeURL: payload.result.restaurants[random].restaurant.menu_url,
-    // });
-    // });
+      
+$
       $(".cost42").html(`<p class="average-cost"><span class="cost-text">Average cost for two:</span><br><span class="price-text">$${payload.result.restaurants[random].restaurant.average_cost_for_two}</span></p>`)
     }).on('error', function(payload) {
       /*YOUR CODE GOES HERE*/
@@ -186,6 +159,8 @@ $(".modal").iziModal({
     // run AJAX call inside the button click event
   });
 
+
+
    // Initialize and add the map
 function initMap() {
   // The location of Chicago
@@ -196,6 +171,9 @@ function initMap() {
   // The marker, positioned at
   var marker = new google.maps.Marker({position: chicago, map: map});
 }
+
+initMap();
+
   function loginWithGitHub() {
     console.log("Github login button clicked")
     var provider = new firebase.auth.GithubAuthProvider();
@@ -249,8 +227,5 @@ function initMap() {
       // No user is signed in.
     }
   });
-  // $("#modal").iziModal({
-  //   iframeURL:
-  // });
-  // document . ready end
+   // document . ready end
 });
