@@ -45,7 +45,6 @@ $(document).ready(function() {
       var random = Math.floor((Math.random() * 19) + 0);
       console.log(random);
       console.log(payload);
-      $("body").css("background-image", "url('assets/images/backgroundAt92Opacity.jpg')")
       $(".restaurant-name").html(payload.result.restaurants[random].restaurant.name);
       var address = payload.result.restaurants[random].restaurant.location.address
       console.log(address);
@@ -61,42 +60,60 @@ $(document).ready(function() {
 
       console.log(shortenSuffix)
       $("#cuisine-input")
-        .css("grid-row", "6/7")
-        .css("grid-column", "3/4")
+      .css("grid-row", "4/5")
+      .css("grid-column", "2/4")
         .css("width", "75%")
-        .css("align-self", "start");
+        .css("align-self", "center");
+
       $(".average-cost").css("align-self", "center")
+
       $("#cuisine-find-btn")
-        .css("grid-row", "7/8")
-        .css("grid-column", "3/4")
+      .css("grid-row", "4/5")
+      .css("grid-column", "3/5")
         .css("margin-top", "0px");
       $(".restaurant-location")
+      .css("color", "black")
+      .css("font-size", "30px")
         .html(`${shortenSuffix}`)
         .css("grid-column", "3/4")
+        .css("grid-row", "6/7")
         .css("margin-left", "10px")
         .css("align-self", "center");
+
       $(".restaurant-name")
         .css("grid-column", "3/4")
         .css("align-self", "center")
         .css("margin-left", "10px")
-        .css("font-size", "50px")
+        .css("font-size", "30px")
+
       $("p.restaurant-name")
+      .css("color", "black")
       .css("align-self", "center")
-      .css("grid-row", "2/3")
+      .css("grid-row", "5/6")
+
       $(".cuisine")
       .html(`<span class="cuisine-text"><p>Cuisines:<br>${payload.result.restaurants[random].restaurant.cuisines}</p></span>`)
-      .css("grid-row", "4/5")
-      .css("grid-column", "1/2")
+      .css("grid-row", "7/8")
+      .css("grid-column", "2/3")
+
 
       $("#restaurant-rating").html(`<p class="rating-style"><span class="word-rating">Rating:</span><br>${payload.result.restaurants[random].restaurant.user_rating.aggregate_rating}<span class="out-of-5">/5</span></p>`);
       $(".restaurant-neighborhood")
         .html(`Neighborhood:<br>${payload.result.restaurants[random].restaurant.location.locality}`)
         .css("margin-left", "10px")
         .css("border-radius", "5px")
+        .css("grid-column", "3/4")
+        .css("grid-row", "7/8")
+        .css("color", "black")
+
       $("#image")
         .html(`<a href="${payload.result.restaurants[random].restaurant.featured_image}" id="pop"><img src="${payload.result.restaurants[random].restaurant.featured_image}" class="img"></a>`)
-        .css("grid-column", "1/2")
-        .css("grid-row", "3/4");
+        .css("grid-column", "2/3")
+        .css("grid-row", "5/7")
+        .css("align-self", "center")
+        .css("text-align", "center");
+
+
       // NEW TECHNOLOGY: lightbox popup initialization code
 
         $('#pop').magnificPopup({
