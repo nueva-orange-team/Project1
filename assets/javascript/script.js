@@ -217,3 +217,6 @@ $(document).ready(function() {
 
   // document . ready end
 });
+$(function() {
+  $('body').removeClass('fade-out');
+});
