@@ -246,3 +246,14 @@ p .price-text {
 
 
   }
+  body {
+    opacity: 1;
+    transition: 5s opacity;
+}
+body.fade-out {
+    opacity: 0;
+    transition: none;
+}
+html {
+  background-color: black;
+}
