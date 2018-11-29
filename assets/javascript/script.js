@@ -20,45 +20,63 @@ $(document).ready(function() {
   var address;
   var map;
   var marker;
+  var lat;
+  var lon;
   var stringLat;
   var stringLon;
 
+function findLocation() {
   navigator.geolocation.getCurrentPosition(gotLocation);
 
   function gotLocation(hunger) {
       $("#hud").hide();
   console.log(hunger);
-     var lat = hunger.coords.latitude;
-     var lon = hunger.coords.longitude;
-  return
+     lat = hunger.coords.latitude;
+     lon = hunger.coords.longitude;
+     console.log(lat);
+     console.log(lon);
      stringLat = JSON.stringify(lat);
      stringLon = JSON.stringify(lon);
-  
-  //    console.log(lat);
-  //    console.log(lon);
   
      console.log(stringLat);
      console.log(stringLon);
      console.log(typeof(stringLat));
   }
+}
+findLocation();
+
   //API call will get restaurants of type var cuisine in "searc query" near "coordinates" pre-set below
-  $("#cuisine-find-btn").on("click", function() {
-    cuisine = $("#cuisine-input").val().trim();
-   gotLocation();
+  $("#cuisine-find-btn").on("click", function() { 
+    // displayRestaurant();
+ 
+   
+//   function displayRestaurant(){
+//   cuisine = $("#cuisine-input").val().trim();
+//   var queryURL = "https://developers.zomato.com/api/v2.1/locations?query="+cuisine+"&lat="+lat+"&lon="+lon+"&count=10";
+  
+//   $.ajax({
+//     url: queryURL,
+//     method: "GET"
+//   }).then(function(response) {
+//     console.log(response);
+//   });
+// }
+    
     rapid.call('Zomato', 'search', {
       'apiKey': `${apiKey}`,
-      'coordinates': stringLat,  stringLon,
+      'coordinates': lat, lon,
       'entityType': 'city',
       'count': '20',
       'radiusSearch': '1000',
       'entityId': '292',
       'searchQuery': cuisine,
+      // 'sort': 'realDistance',
       'offset': '0',
       'headers': {
         "accept": "application/json",
         "Access-Control-Allow-Origin": "*",
       }
-      // 'sort': 'realDistance'
+      
 
     }).on('success', function(payload) {
       var random = Math.floor((Math.random() * 19) + 0);
@@ -76,9 +94,6 @@ $(document).ready(function() {
         .replace("Street,", "St.")
         .replace("North", "N")
         .replace("South", "S")
-      // .replace("South", "S.")
-
-
 
       console.log(shortenSuffix)
       $("#cuisine-input")
@@ -120,21 +135,27 @@ $(document).ready(function() {
         var imgNum = Math.floor((Math.random() * 50) + 0);
       $("#image").html(`<img src="${payload.result.restaurants[random].restaurant.featured_image}" class="img" data-lightbox="image-${imgNum}">`)
       $(".cuisine").html(`<span class="cuisine-text"><p>Cuisines:<br>${payload.result.restaurants[random].restaurant.cuisines}</p></span>`)
-      // $("#menu")
-      //   .html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text"><p>See menu</p><span></a>`)
-      //   .css("background", "black")
-      //   .css("opacity", "0.9")
-      //   .mouseover(function() {
-      //     $(this).css("opacity","1");
-      //     $(this).css("background","#3a3636")
-      //   })
-      //   .mouseout(function() {
-      //     $(this).css("opacity","0.9")
-      //     $(this).css("background","black")
-      //   });
+     
 
 
-   
+    //  Commented out from before:
+    //   $("#menu")
+    //     .html(`<a href='${payload.result.restaurants[random].restaurant.menu_url}' target='_blank'><span class="menu-text"><p>See menu</p><span></a>`)
+    //     .css("background", "black")
+    //     .css("opacity", "0.9")
+    //     .mouseover(function() {
+    //       $(this).css("opacity","1");
+    //       $(this).css("background","#3a3636")
+    //     })
+    //     .mouseout(function() {
+    //       $(this).css("opacity","0.9")
+    //       $(this).css("background","black")
+    //     });
+
+  
+
+
+
       $(".cost42").html(`<p class="average-cost"><span class="cost-text">Average cost for two:</span><br><span class="price-text">$${payload.result.restaurants[random].restaurant.average_cost_for_two}</span></p>`)
     }).on('error', function(payload) {
       /*YOUR CODE GOES HERE*/
