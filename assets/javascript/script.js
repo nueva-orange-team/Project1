@@ -43,6 +43,7 @@ $(document).ready(function() {
 
     }).on('success', function(payload) {
       var random = Math.floor((Math.random() * 19) + 0);
+      initMap();
       console.log(random);
       console.log(payload);
       $(".restaurant-name").html(payload.result.restaurants[random].restaurant.name);
