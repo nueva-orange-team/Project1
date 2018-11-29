@@ -79,6 +79,10 @@ $(document).ready(function() {
 
     }).on('success', function(payload) {
       var random = Math.floor((Math.random() * 19) + 0);
+<<<<<<< HEAD
+=======
+      // initMap();
+>>>>>>> 5e9633c48c94292329f25ad8539aa0d75c1a8f4b
       console.log(random);
       console.log(payload);
       $(".restaurant-name").html(payload.result.restaurants[random].restaurant.name);
@@ -98,8 +102,8 @@ $(document).ready(function() {
       $("#cuisine-input")
       .css("grid-row", "4/5")
       .css("grid-column", "2/4")
-        .css("width", "75%")
-        .css("align-self", "center");
+        .css("width", "70%")
+        .css("align-self", "flex-start");
 
       $(".average-cost").css("align-self", "center")
 
@@ -131,6 +135,7 @@ $(document).ready(function() {
       .html(`<span class="cuisine-text"><p>Cuisines:<br>${payload.result.restaurants[random].restaurant.cuisines}</p></span>`)
       .css("grid-row", "7/8")
       .css("grid-column", "2/3")
+      .css("justify-content", "center")
 
 
       $("#restaurant-rating").html(`<p class="rating-style"><span class="word-rating">Rating:</span><br>${payload.result.restaurants[random].restaurant.user_rating.aggregate_rating}<span class="out-of-5">/5</span></p>`);
@@ -166,7 +171,7 @@ $(document).ready(function() {
           $(".menu-text").css("color","white")
 
         });
-      $(".cost42").html(`<p class="average-cost"><span class="cost-text">Average cost for two:</span><br><span class="price-text">$${payload.result.restaurants[random].restaurant.average_cost_for_two}</span></p>`)
+      $(".cost42").html(`<p class="average-cost">Average cost for two: $${payload.result.restaurants[random].restaurant.average_cost_for_two}</p>`)
     }).on('error', function(payload) {
       /*YOUR CODE GOES HERE*/
     });
@@ -185,7 +190,11 @@ $(document).ready(function() {
 
 
 
+<<<<<<< HEAD
 //    // Initialize and add the map
+=======
+   // Initialize and add the map
+>>>>>>> 5e9633c48c94292329f25ad8539aa0d75c1a8f4b
 // function initMap() {
 //   // The location of Chicago
 //   var chicago = {lat: 41.881832, lng: -87.623177};
@@ -250,4 +259,7 @@ $(document).ready(function() {
   });
 
   // document . ready end
+});
+$(function() {
+  $('body').removeClass('fade-out');
 });
