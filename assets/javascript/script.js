@@ -79,10 +79,7 @@ $(document).ready(function() {
 
     }).on('success', function(payload) {
       var random = Math.floor((Math.random() * 19) + 0);
-<<<<<<< HEAD
-=======
       // initMap();
->>>>>>> 5e9633c48c94292329f25ad8539aa0d75c1a8f4b
       console.log(random);
       console.log(payload);
       $(".restaurant-name").html(payload.result.restaurants[random].restaurant.name);
@@ -190,11 +187,7 @@ $(document).ready(function() {
 
 
 
-<<<<<<< HEAD
 //    // Initialize and add the map
-=======
-   // Initialize and add the map
->>>>>>> 5e9633c48c94292329f25ad8539aa0d75c1a8f4b
 // function initMap() {
 //   // The location of Chicago
 //   var chicago = {lat: 41.881832, lng: -87.623177};
