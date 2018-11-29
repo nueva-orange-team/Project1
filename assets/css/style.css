@@ -198,34 +198,42 @@ p .price-text {
   font-size: 40px;
 }
 
-/* #mySidenav a {
-  position: absolute;
-  left: -80px;
-  transition: 0.3s;
-  padding: 15px;
-  width: 100px;
-  text-decoration: none;
-  font-size: 20px;
-  color: white;
-  border-radius: 0 5px 5px 0;
-} */
 
-#mySidenav a:hover {
-  left: 0;
-}
-
-#loginWGithub {
-  top: 20px;
-  background-color: #4CAF50;
-}
-
-#loginWGoogle {
-  top: 110px;
-  background-color: #2196F3;
-}
-
-/* Set the size of the div element that contains the map */
-/* #map {
-  height: 400px;  /* The height is 400 pixels */
-  /* width: 100%;  /* The width is the width of the web page */ */
- } */
+  .bttn2 {
+    font-size: 15x;
+    border-radius: 8px;
+    color:white;
+    height: 50px;
+    width: 120px;
+    background: #ffa500;
+  }
+  .bttn1 {
+    border-radius: 8px;
+    background: #ffa500;
+    font-size: 15px;
+    height: 50px;
+    width: 120px;
+    color: white;
+  }
+  .signbttn {
+    color: black;
+    font-size: 20px;
+  }
+  .bttn1 {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  }
+  .bttn2 {-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  
+  }
+  
+  .bttn1:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+  .bttn2:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  
+  }
