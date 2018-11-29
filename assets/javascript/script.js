@@ -25,22 +25,28 @@ $(document).ready(function() {
   var marker;
   var stringLat;
   var stringLon;
-
+  var newCoords = "";
   navigator.geolocation.getCurrentPosition(gotLocation);
+
+
+
    function gotLocation(currentLocation) {
       $("#hud").hide();
-  console.log(currentLocation);
+      console.log("hello");
+
+      console.log(currentLocation);
      var lat = currentLocation.coords.latitude;
      var lon = currentLocation.coords.longitude;
-  return
+  
      stringLat = JSON.stringify(lat);
      stringLon = JSON.stringify(lon);
-  
+     newCoords = stringLat + "," + stringLon;
   //    console.log(lat);
   //    console.log(lon);
   
      console.log(stringLat);
      console.log(stringLon);
+     console.log(newCoords);
      console.log(typeof(stringLat));
   }
   
@@ -50,12 +56,17 @@ $(document).ready(function() {
   $("#cuisine-find-btn").on("click", function() {
     cuisine = $("#cuisine-input").val().trim();
 
-  gotLocation();
+  // gotLocation(currentLocation);
+
+
+    console.log(newCoords);
+
     rapid.call('Zomato', 'search', {
       'apiKey': `${apiKey}`,
-      'coordinates': '42.032402, -87.741623',
+      'coordinates': newCoords,
       'entityType': 'city',
       'count': '20',
+      'sort': 'realDistance',
       'radiusSearch': '1000',
       'entityId': '292',
       'searchQuery': cuisine,
