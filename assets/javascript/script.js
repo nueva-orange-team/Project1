@@ -16,6 +16,7 @@ var userLat;
 var userLon;
 var parseRLat;
 var parseRLon;
+var logIn = false;
 
 // Initialize Firebase
 var config = {
@@ -382,6 +383,21 @@ function loginWithGitHub() {
 
 };
 
+function onSignIn(googleUser) {
+  // Useful data for your client-side scripts:
+  var profile = googleUser.getBasicProfile();
+  console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+  console.log('Full Name: ' + profile.getName());
+  console.log('Given Name: ' + profile.getGivenName());
+  console.log('Family Name: ' + profile.getFamilyName());
+  console.log("Image URL: " + profile.getImageUrl());
+  console.log("Email: " + profile.getEmail());
+
+  // The ID token you need to pass to your backend:
+  var id_token = googleUser.getAuthResponse().id_token;
+  console.log("ID Token: " + id_token);
+};
+
 function loginWithGoogle() {
   console.log("Google login button clicked")
 };
@@ -397,6 +413,7 @@ function signout() {
 }
 
 $("#loginWGithub").on("click", loginWithGitHub);
+$("#loginWGoogle").on("click", onSignIn);
 $("#loginWGoogle").on("click", loginWithGoogle);
 $("#signout").on("click", signout);
 
@@ -410,20 +427,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
-<<<<<<< HEAD
-  $("#loginWGithub").on("click", loginWithGitHub);
-  $("#signout").on("click", signout);
-=======
->>>>>>> 395e51bc41a72e2070dce515a1dd47c704d596dd
 
 $(function() {
   $('body').removeClass('fade-out');
 });
-
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-}
