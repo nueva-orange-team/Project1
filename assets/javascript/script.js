@@ -10,13 +10,6 @@ var newCoords;
 var lon;
 var lat;
 console.log(newCoords)
-
-var restaurantLon;
-var restaurantLat;
-var userLat;
-var userLon;
-var parseRLat;
-var parseRLon;
 var logIn = false;
 
 
@@ -238,6 +231,7 @@ $("#cuisine-input").on("keydown", function() {
 function loginWithGitHub() {
   console.log("Github login button clicked")
   var provider = new firebase.auth.GithubAuthProvider();
+
   firebase.auth().signInWithPopup(provider).then(function(result) {
     window.location("homepage.html") // make second page put in here
     // This gives you a GitHub Access Token. You can use it to access the GitHub API.
@@ -270,8 +264,7 @@ function onSignIn(googleUser) {
   console.log('Family Name: ' + profile.getFamilyName());
   console.log("Image URL: " + profile.getImageUrl());
   console.log("Email: " + profile.getEmail());
-
-  // The ID token you need to pass to your backend:
+   // The ID token you need to pass to your backend:
   var id_token = googleUser.getAuthResponse().id_token;
   console.log("ID Token: " + id_token);
 };
