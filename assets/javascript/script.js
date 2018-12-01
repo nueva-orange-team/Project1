@@ -11,6 +11,8 @@ var lon;
 var lat;
 console.log(newCoords)
 
+localStorage.clear();
+
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyAP32QvCD4ukQGZp5neVVqxj2vTGYDPwpk",
