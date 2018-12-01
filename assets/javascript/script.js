@@ -10,12 +10,6 @@ var newCoords;
 var lon;
 var lat;
 console.log(newCoords)
-var restaurantLon;
-var restaurantLat;
-var userLat;
-var userLon;
-var parseRLat;
-var parseRLon;
 
 // Initialize Firebase
 var config = {
@@ -57,38 +51,17 @@ getLocation()
 
 function gotLocation(currentLocation) {
 if (gotLocation) {
-  x.html("<p>Thanks, you must be hungry af!</p>").slideDown("slow")
+  x.html("<p class='error-text'>Thanks, you must be hungry af</p>")
 }
-
-  // change text
-  // x.html("<p>Thanks, you must be hungry af!</p>").fadeIn(2000)
-
-
   lat = currentLocation.coords.latitude;
   lon = currentLocation.coords.longitude;
-  console.log(typeof(lat))
-  console.log(typeof(lon))
-
-  console.log(lat);
-
   stringLat = JSON.stringify(lat);
   stringLon = JSON.stringify(lon);
   floatLon = parseFloat(stringLon)
   floatLat = parseFloat(stringLat)
-  console.log(typeof(floatLon))
-  console.log(typeof(floatLat))
-
-  console.log(floatLon);
-  console.log(floatLat);
-  console.log(`current latitude: ${stringLat}`)
-  console.log(`current longitude: ${stringLon}`)
-
-
   newCoords = stringLat + "," + stringLon;
-  console.log(newCoords)
 }
-  console.log(lat);
-    console.log(lon);
+
 
 function showError(error) {
   switch (error.code) {
@@ -107,48 +80,10 @@ function showError(error) {
   }
 }
 
-
-function initMap() {
-  // map options
-  var options = {
-    zoom: 9,
-    // would like to dynamically update the lat and lon values with the geolocation results
-    center: {
-      lat: 41.917349,
-      lng: -87.68835589999999
-    }
-  }
-
-  var map = new google.maps.Map(document.getElementById('map'), options);
-
-  var currentLocalMarker = new google.maps.Marker({
-    position: {
-      lat: 41.917349,
-      lng: -87.68835589999999,
-    },
-    map: map
-  })
-
-  var currentRestaurantMarker = new google.maps.Marker({
-    position: {
-      lat: 42.055984,
-      lng: -87.675171
-    },
-    map: map
-  })
-
-}
-
-
-
-
-
 //API call will get restaurants of type var cuisine in "searc query" near "coordinates" pre-set below
 $("#cuisine-find-btn").on("click", function() {
   cuisine = $("#cuisine-input").val().trim();
-
-
-
+x.hide()
 
   rapid.call('Zomato', 'search', {
     'apiKey': `${apiKey}`,
@@ -171,34 +106,8 @@ $("#cuisine-find-btn").on("click", function() {
     var random = Math.floor((Math.random() * 19) + 0);
     var rLat = payload.result.restaurants[random].restaurant.location.latitude;
     var rLon = payload.result.restaurants[random].restaurant.location.longitude;
-     parseRLat = parseFloat(rLat);
-     parseRLon = parseFloat(rLon)
-
-
-//     database.ref().set({
-//           lat,
-//           lon,
-//           newCoords,
-//           parseRLat,
-//           parseRLon,
-//           dateAdded: firebase.database.ServerValue.TIMESTAMP
-//         });
-//
-//
-// database.ref().on("value", function(snapshot){
-//    restaurantLon = snapshot.val().parseRLon;
-//    restaurantLat = snapshot.val().parseRLat;
-//    userLat = snapshot.val().lat;
-//    userLon = snapshot.val().lon;
-//
-//
-//
-// })
-
-
-
-
-
+    var parseRLat = parseFloat(rLat);
+    var parseRLon = parseFloat(rLon)
 
     // would like to take these values and create markers on the google map to show distance between user current location and the restaurant
     console.log(`restaurants latitude: ${payload.result.restaurants[random].restaurant.location.latitude}`)
@@ -303,7 +212,6 @@ $("#cuisine-find-btn").on("click", function() {
   }).on('error', function(payload) {
     /*YOUR CODE GOES HERE*/
   });
-
   // changes the submit button text
   $("#cuisine-input").val("");
   if ($("#cuisine-input").val() === "") {
@@ -317,44 +225,6 @@ $("#cuisine-input").on("keydown", function() {
   $("#cuisine-find-btn").text("Find This Cuisine Near Me!")
 });
 
-database.ref().set({
-      lat,
-      lon,
-      newCoords,
-      parseRLat,
-      parseRLon,
-      dateAdded: firebase.database.ServerValue.TIMESTAMP
-    });
-
-
-database.ref().on("value", function(snapshot){
-restaurantLon = snapshot.val().parseRLon;
-restaurantLat = snapshot.val().parseRLat;
-userLat = snapshot.val().lat;
-userLon = snapshot.val().lon;
-
-})
-
-// console.log(parseRLat);
-// console.log(parseRLon);
-console.log(restaurantLon);
-console.log(restaurantLat);
-console.log(userLat);
-console.log(userLon);
-
-
-
-
-
-
-
-
-
-
-
-
-
-console.log(restaurantLon)
 
 function loginWithGitHub() {
   console.log("Github login button clicked")
@@ -409,6 +279,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     // No user is signed in.
   }
 });
+
+
 
 
 $(function() {
