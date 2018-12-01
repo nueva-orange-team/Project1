@@ -11,7 +11,7 @@ var lon;
 var lat;
 console.log(newCoords)
 
-localStorage.clear();
+// localStorage.clear();
 
 // Initialize Firebase
 var config = {
