@@ -29,5 +29,4 @@ var config = {
   // Initialize the FirebaseUI Widget using Firebase.
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
   // The start method will wait until the DOM is loaded.
-  ui.start('#bttn1', uiConfig);
-  ui.start('#bttn2', uiConfig);
+  ui.start('button', uiConfig);
