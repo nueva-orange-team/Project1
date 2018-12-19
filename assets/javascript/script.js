@@ -1,3 +1,4 @@
+//Create global variables to store data 
 var cuisine = "";
 var address;
 var map;
@@ -9,9 +10,10 @@ var floatLon;
 var newCoords;
 var lon;
 var lat;
+var userLat = [];
+var userLon = [];
 console.log(newCoords)
 var logIn = false;
-
 
 // localStorage.clear();
 
@@ -30,14 +32,12 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 
-
-//Zomato API to find restaurant
+//Zomato API to find restaurant uses Rapid API SDK
 var apiKey = "7a92ebe9a7f0e1c5487a3ea08e3ef1e2";
 
 var rapid = new RapidAPI("default-application_5bd7a6a6e4b0a5d5a03b6ba4", "388648e2-e45b-4a7d-a751-a2e38784ef00");
 
 //variable to hold what kind of restaurant user is looking for
-
 
 // navigator.geolocation.getCurrentPosition(gotLocation, showError);
 
@@ -51,15 +51,13 @@ function getLocation() {
   }
 }
 
-
 getLocation()
 
 function gotLocation(currentLocation) {
 if (gotLocation) {
-  x.html("<p>Thanks, you must be hungry af!</p>")
+  x.html("<p>Thanks, you must be hungry!</p>")
   lat = currentLocation.coords.latitude;
   lon = currentLocation.coords.longitude;
-
 
   userLon.push(lon)
   userLat.push(lat);
@@ -106,30 +104,30 @@ function showError(error) {
 }
 
 
-function initMap() {
-  // map options
-  var options = {
-    zoom: 8,
-    // would like to dynamically update the lat and lon values with the geolocation results
-    center: new google.maps.LatLng(userLat,userLon)
-  }
+// function initMap() {
+//   // map options
+//   var options = {
+//     zoom: 8,
+//     // would like to dynamically update the lat and lon values with the geolocation results
+//     center: new google.maps.LatLng(userLat,userLon)
+//   }
 
-  var map = new google.maps.Map(document.getElementById('map'), options);
+//   var map = new google.maps.Map(document.getElementById('map'), options);
 
-  var currentLocalMarker = new google.maps.Marker({
-    position: new google.maps.LatLng(userLat[0],userLon)[0],
-    map: map
-  })
+//   var currentLocalMarker = new google.maps.Marker({
+//     position: new google.maps.LatLng(userLat[0],userLon)[0],
+//     map: map
+//   })
 
-  var currentRestaurantMarker = new google.maps.Marker({
-    position: {
-      lat: 42.055984,
-      lng: -87.675171
-    },
-    map: map
-  })
+//   var currentRestaurantMarker = new google.maps.Marker({
+//     position: {
+//       lat: 42.055984,
+//       lng: -87.675171
+//     },
+//     map: map
+//   })
 
-}
+// }
 
 
 
@@ -138,9 +136,6 @@ function initMap() {
 //API call will get restaurants of type var cuisine in "searc query" near "coordinates" pre-set below
 $("#cuisine-find-btn").on("click", function() {
   cuisine = $("#cuisine-input").val().trim();
-
-
-
 
   rapid.call('Zomato', 'search', {
     'apiKey': `${apiKey}`,
@@ -159,13 +154,13 @@ $("#cuisine-find-btn").on("click", function() {
 
   }).on('success', function(payload) {
     console.log(payload);
-
     var random = Math.floor((Math.random() * 19) + 0);
     var rLat = payload.result.restaurants[random].restaurant.location.latitude;
     var rLon = payload.result.restaurants[random].restaurant.location.longitude;
      parseRLat = parseFloat(rLat);
      parseRLon = parseFloat(rLon)
 
+//We tried to put lattitude and longitude in Firebase to reference it later. 
 
 //     database.ref().set({
 //           lat,
@@ -175,26 +170,18 @@ $("#cuisine-find-btn").on("click", function() {
 //           parseRLon,
 //           dateAdded: firebase.database.ServerValue.TIMESTAMP
 //         });
-//
-//
 // database.ref().on("value", function(snapshot){
 //    restaurantLon = snapshot.val().parseRLon;
 //    restaurantLat = snapshot.val().parseRLat;
 //    userLat = snapshot.val().lat;
 //    userLon = snapshot.val().lon;
-//
-//
-//
 // })
 
+// would like to take these values and create markers on the google map to show distance between user current location and the restaurant
+    // console.log(`restaurants latitude: ${payload.result.restaurants[random].restaurant.location.latitude}`)
+    // console.log(`restaurants longitude: ${payload.result.restaurants[random].restaurant.location.longitude}`)
 
-
-
-
-
-    // would like to take these values and create markers on the google map to show distance between user current location and the restaurant
-    console.log(`restaurants latitude: ${payload.result.restaurants[random].restaurant.location.latitude}`)
-    console.log(`restaurants longitude: ${payload.result.restaurants[random].restaurant.location.longitude}`)
+//Displaying API results for the user:
     $(".restaurant-name").html(payload.result.restaurants[random].restaurant.name);
     address = payload.result.restaurants[random].restaurant.location.address;
     var shortenSuffix = address
@@ -213,7 +200,6 @@ $("#cuisine-find-btn").on("click", function() {
       .css("align-self", "flex-start");
 
     $(".average-cost").css("align-self", "center")
-
 
     $("#cuisine-find-btn")
       .css("grid-row", "4/5")
@@ -293,30 +279,26 @@ $("#cuisine-find-btn").on("click", function() {
 
     $(".cost42").html(`<p class="average-cost">Average cost for two: $${payload.result.restaurants[random].restaurant.average_cost_for_two}</p>`)
   }).on('error', function(payload) {
-    /*YOUR CODE GOES HERE*/
+    console.log('error');
   });
-
-  // changes the submit button text
-  $("#cuisine-input").val("");
-  if ($("#cuisine-input").val() === "") {
-    $("#cuisine-find-btn").text("Get another option")
-  } else {
-    $("#cuisine-find-btn").text("Find This Cuisine Near Me!")
-  }
-});
-// function that changes the submit button text
-$("#cuisine-input").on("keydown", function() {
-  $("#cuisine-find-btn").text("Find This Cuisine Near Me!")
 });
 
+//changes the submit button text
+//   $("#cuisine-input").val("");
+//   if ($("#cuisine-input").val() === "") {
+//     $("#cuisine-find-btn").text("Get another option")
+//   } else {
+//     $("#cuisine-find-btn").text("Find This Cuisine Near Me!")
+//   }
+// });
 
 
+//function that changes the submit button text
+$("#cuisine-find-btn").on("click", function() {
+  $("#cuisine-find-btn").text("Find Another Option Near Me!")
+});
 
-
-
-
-
-
+//We attemped to create authorization with GitHub and Google 
 function loginWithGitHub() {
   console.log("Github login button clicked")
   var provider = new firebase.auth.GithubAuthProvider();
@@ -340,8 +322,6 @@ function loginWithGitHub() {
     var credential = error.credential;
     // ...
   });
-
-
 };
 
 function onSignIn(googleUser) {
@@ -370,7 +350,7 @@ function signout() {
     // An error happened.
   });
   console.log("sign out clicked")
-}
+};
 
 $("#loginWGithub").on("click", loginWithGitHub);
 $("#loginWGoogle").on("click", onSignIn);
@@ -386,7 +366,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     // No user is signed in.
   }
 });
-
 
 $(function() {
   $('body').removeClass('fade-out');
